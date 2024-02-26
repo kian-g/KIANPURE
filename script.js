@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("checkboxList");
 
     jsonData.forEach((item, index) => {
+        const listItem = document.createElement("li"); // Create a list item
+
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.id = `item-${index}`;
@@ -12,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
         label.htmlFor = `item-${index}`;
         label.textContent = item;
 
-        container.appendChild(checkbox);
-        container.appendChild(label);
-        container.appendChild(document.createElement("br"));
+        listItem.appendChild(checkbox); // Add checkbox to list item
+        listItem.appendChild(label); // Add label to list item
+        container.appendChild(listItem); // Add list item to ordered list
     });
 
     document.getElementById("calculateBtn").addEventListener("click", function () {
@@ -22,6 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const checkedCount = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
         const result = jsonData.length - checkedCount;
 
-        document.getElementById("result").textContent = `Difference: ${result}`;
+        document.getElementById("result").textContent = `SCORE: ${result}`;
     });
 });
